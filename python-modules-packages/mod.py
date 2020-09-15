@@ -36,3 +36,42 @@ x = mod.Foo()
 x
 <mod.Foo object at 0x7f78ff3d8750>
 '''
+
+def bar():
+    try:
+        from mod import foo
+        foo('corge')
+        # Non-existent module
+        from buz import baz
+    except ImportError:
+        print('Module not found')
+        # Existing module, but non-existent object
+    
+    try:
+        from mod import baz
+    except ImportError:
+        print('Object not found in module')
+            
+bar()
+
+'''
+# built-in function to show defined names in a namespace - trace imports in namespace
+dir()
+
+# global namespace
+qux = [1, 2, 3, 4, 5]
+dir()
+
+class Bar():
+    pass
+
+x = Bar()
+dir()
+
+import mod
+dir(mod)
+'''
+
+
+
+
